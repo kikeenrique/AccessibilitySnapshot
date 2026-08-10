@@ -38,7 +38,6 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "AccessibilitySnapshotModel"),
         .package(
             url: "https://github.com/uber/ios-snapshot-test-case.git",
             .upToNextMajor(from: "8.0.0")
@@ -49,6 +48,14 @@ let package = Package(
         ),
     ],
     targets: [
+        // Compiled directly into this package (rather than referenced with `.package(path:)`) because SwiftPM only
+        // supports local package dependencies in root packages, which would prevent consumers from depending on this
+        // package using a branch- or revision-based requirement. The sources also remain an independent package at
+        // `AccessibilitySnapshotModel/` so its tests can run on any Swift toolchain via `swift test`.
+        .target(
+            name: "AccessibilitySnapshotModel",
+            path: "AccessibilitySnapshotModel/Sources/AccessibilitySnapshotModel"
+        ),
         .target(
             name: "AccessibilitySnapshotParser-ObjC",
             path: "Sources/AccessibilitySnapshot/Parser/ObjC"
@@ -56,7 +63,7 @@ let package = Package(
         .target(
             name: "AccessibilitySnapshotParser",
             dependencies: [
-                .product(name: "AccessibilitySnapshotModel", package: "AccessibilitySnapshotModel"),
+                "AccessibilitySnapshotModel",
                 "AccessibilitySnapshotParser-ObjC",
             ],
             path: "Sources/AccessibilitySnapshot/Parser/Swift",
