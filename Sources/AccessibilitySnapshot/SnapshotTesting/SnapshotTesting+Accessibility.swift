@@ -1,7 +1,8 @@
-// swift-snapshot-testing only vends its UIKit image strategies on iOS and tvOS, so the strategies built on top of them
-// are unavailable on visionOS. The parsing and rendering layers (AccessibilitySnapshotParser, -Core, -Previews) are
-// available on visionOS and can be used directly there.
-#if os(iOS) || os(tvOS)
+// These strategies are built on swift-snapshot-testing's UIKit image strategies, so they are only available on the
+// platforms where that package vends them. The visionOS case requires resolving swift-snapshot-testing to a version
+// that gates its UIKit strategies for visionOS as well (pointfreeco/swift-snapshot-testing#1116); stock releases
+// through 1.18.9 vend them on iOS and tvOS only.
+#if os(iOS) || os(tvOS) || os(visionOS)
 
     import AccessibilitySnapshotCore
     import AccessibilitySnapshotParser

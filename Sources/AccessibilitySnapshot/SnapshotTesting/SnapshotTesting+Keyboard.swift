@@ -1,6 +1,6 @@
-// See the note in SnapshotTesting+Accessibility.swift: swift-snapshot-testing's UIKit image strategies are iOS/tvOS
-// only, so these strategies are as well.
-#if os(iOS) || os(tvOS)
+// See the note in SnapshotTesting+Accessibility.swift: these strategies follow the platforms where
+// swift-snapshot-testing vends its UIKit image strategies.
+#if os(iOS) || os(tvOS) || os(visionOS)
 
     import AccessibilitySnapshotCore
     import SnapshotTesting
