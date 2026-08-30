@@ -42,9 +42,16 @@ let package = Package(
             url: "https://github.com/uber/ios-snapshot-test-case.git",
             .upToNextMajor(from: "8.0.0")
         ),
+        // Resolved to a fork branch rather than a stock release because the `Snapshotting` strategies in
+        // `Sources/AccessibilitySnapshot/SnapshotTesting` are vended on visionOS, which requires a
+        // swift-snapshot-testing that gates its UIKit image strategies for visionOS as well
+        // (pointfreeco/swift-snapshot-testing#1116). Stock releases through 1.18.9 vend them on iOS and tvOS only.
+        //
+        // A branch requirement makes this package unconsumable by a versioned dependent, so this must be restored to
+        // `.upToNextMajor(from: "1.10.0")` before any of this lineage is proposed upstream.
         .package(
-            url: "https://github.com/pointfreeco/swift-snapshot-testing.git",
-            .upToNextMajor(from: "1.10.0")
+            url: "https://github.com/kikeenrique/swift-snapshot-testing.git",
+            branch: "dual-vision-mac"
         ),
     ],
     targets: [
