@@ -45,7 +45,7 @@ let package = Package(
         // Resolved to a fork branch rather than a stock release because the `Snapshotting` strategies in
         // `Sources/AccessibilitySnapshot/SnapshotTesting` are vended on visionOS, which requires a
         // swift-snapshot-testing that gates its UIKit image strategies for visionOS as well
-        // (pointfreeco/swift-snapshot-testing#1116). Stock releases through 1.18.9 vend them on iOS and tvOS only.
+        // (pointfreeco/swift-snapshot-testing#1116). Stock releases through 1.19.6 vend them on iOS and tvOS only.
         //
         // A branch requirement makes this package unconsumable by a versioned dependent, so this must be restored to
         // `.upToNextMajor(from: "1.10.0")` before any of this lineage is proposed upstream.

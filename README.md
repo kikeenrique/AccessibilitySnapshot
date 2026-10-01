@@ -147,7 +147,7 @@ hierarchy parsing and legend rendering can be used there directly. The
 visionOS when [swift-snapshot-testing](https://github.com/pointfreeco/swift-snapshot-testing)
 resolves to a version that vends its UIKit image strategies there (see
 [pointfreeco/swift-snapshot-testing#1116](https://github.com/pointfreeco/swift-snapshot-testing/pull/1116);
-stock releases through 1.18.9 vend them on iOS and tvOS only). The
+stock releases through 1.19.6 vend them on iOS and tvOS only). The
 `FBSnapshotTestCase-Accessibility` products are iOS only, as
 [ios-snapshot-test-case](https://github.com/uber/ios-snapshot-test-case) supports iOS only.
 
