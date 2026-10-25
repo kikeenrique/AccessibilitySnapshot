@@ -61,7 +61,8 @@ let package = Package(
         // `AccessibilitySnapshotModel/` so its tests can run on any Swift toolchain via `swift test`.
         .target(
             name: "AccessibilitySnapshotModel",
-            path: "AccessibilitySnapshotModel/Sources/AccessibilitySnapshotModel"
+            path: "AccessibilitySnapshotModel/Sources/AccessibilitySnapshotModel",
+            resources: [.process("Assets")]
         ),
         .target(
             name: "AccessibilitySnapshotParser-ObjC",
@@ -73,8 +74,7 @@ let package = Package(
                 "AccessibilitySnapshotModel",
                 "AccessibilitySnapshotParser-ObjC",
             ],
-            path: "Sources/AccessibilitySnapshot/Parser/Swift",
-            resources: [.process("Assets")]
+            path: "Sources/AccessibilitySnapshot/Parser/Swift"
         ),
         .target(
             name: "AccessibilitySnapshotCore",
